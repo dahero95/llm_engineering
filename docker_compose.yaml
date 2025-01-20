@@ -1,0 +1,15 @@
+services:
+  jupyter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8889:8888
+    volumes:
+      - jupyter-data:/home/jovyan/work
+      - .:/workspace
+    command: start-notebook.py --NotebookApp.token='my-token'
+
+volumes:
+  jupyter-data:
+    name: jupyter-data
